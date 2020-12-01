@@ -85,8 +85,7 @@ Mat distTransform(Mat image, Mat Edges) {
 	Scalar color(255, 255, 100, 255);
 	Mat distTransformImage = image.clone();
 	Mat edgeWithCorners = Edges.clone();
-
-  double minThreshold = 40.0, maxThreshold = 255.0;
+        double minThreshold = 40.0, maxThreshold = 255.0;
 
 	for (auto i = cornerPoints.begin(); i != cornerPoints.end(); i++) {
 		circle(edgeWithCorners, *i, 7, color);
@@ -121,10 +120,10 @@ Point pixel(Mat grayImage, int rad, int x, int y) {
 
 	for (int l = -rad; l < rad + 1; l++) {
 		for (int k = -rad; k < rad + 1; k++) {
-			int idX = funcMinMax(x + k, grayImage.cols - 1);
-			int idY = funcMinMax(y + l, grayImage.rows - 1);
+			int xd = funcMinMax(x + k, grayImage.cols - 1);
+			int yd = funcMinMax(y + l, grayImage.rows - 1);
 
-			around[(l + rad) * size + (k + rad)] = make_pair(static_cast<int>(grayImage.at<uchar>(idY, idX)), Point(idX, idY));
+			around[(l + rad) * size + (k + rad)] = make_pair(static_cast<int>(grayImage.at<uchar>(yd, xd)), Point(xd, yd));
 		}
 	}
 
